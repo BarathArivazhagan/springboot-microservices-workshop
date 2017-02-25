@@ -3,7 +3,7 @@ This repository contains working sets of spring cloud samples with spring cloud 
 
 ### Projects :
 
-### * Eureka-Server : Eureka service registration server 
+* Eureka-Server : Eureka service registration server 
 * Eureka-Client-App1 : Eureka service discovery client registered with eureka-server
 * Eureka-Client-App2 : Eureka service discovery client registered with eureka-server
 * Eureka-Zuul-Proxy : Zuul reverse proxy server acting as reverse proxy pass to other microservices
