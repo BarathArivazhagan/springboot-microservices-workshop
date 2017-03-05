@@ -23,3 +23,11 @@ This repository contains working sets of spring cloud samples with spring cloud 
 	</parent>
   
   ```
+
+### How to run the project ? 
+
+Download all the projects. 
+
+* <b>Eureka Server </b> : start the eureka server at port 8080
+* <b> Eureka Client App1 </b> : start the eureka client app1 listening at port 8081
+* <b> Eureka Client App2 </b> : start the eureka client app2 listening at port 8082
