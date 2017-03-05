@@ -36,13 +36,13 @@ test the clients registration by going to eureka :
  
  http://localhost:8080/ 
  
- #### Test the clients : 
+  <b>Test the clients </b> : 
  
  <b>Client 1</b>: http://localhost:8081/ 
  
  <b>Client 2</b>: http://localhost:8082/ 
  
-  #### Test the clients through Zuul proxy : 
+  <b>Test the clients through Zuul proxy </b>: 
  
  Client 1: http://localhost:8081/app1/ --> routed to --> http://localhost:8081/
  
