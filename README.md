@@ -31,3 +31,21 @@ Download all the projects.
 * <b>Eureka Server </b> : start the eureka server at port 8080
 * <b> Eureka Client App1 </b> : start the eureka client app1 listening at port 8081
 * <b> Eureka Client App2 </b> : start the eureka client app2 listening at port 8082
+
+test the clients registration by going to eureka :
+ 
+ http://localhost:8080/ 
+ 
+ #### Test the clients : 
+ 
+ <b>Client 1</b>: http://localhost:8081/ 
+ 
+ <b>Client 2</b>: http://localhost:8082/ 
+ 
+  #### Test the clients through Zuul proxy : 
+ 
+ Client 1: http://localhost:8081/app1/ --> routed to --> http://localhost:8081/
+ 
+ Client 2: http://localhost:8082/app2/ --> routed to -->  http://localhost:8082/ 
+ 
+ 
