@@ -44,8 +44,8 @@ test the clients registration by going to eureka :
  
   <b>Test the clients through Zuul proxy </b>: 
  
- Client 1: http://localhost:8081/app1/ --> routed to --> http://localhost:8081/
+ Client 1: http://localhost:8085/app1/ --> routed to --> http://localhost:8081/
  
- Client 2: http://localhost:8082/app2/ --> routed to -->  http://localhost:8082/ 
+ Client 2: http://localhost:8085/app2/ --> routed to -->  http://localhost:8082/ 
  
  
