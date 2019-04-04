@@ -1,9 +1,0 @@
-
-spring:
-  application:
-    name: eureka-client-app1
-  cloud:
-    config:
-      uri: http://localhost:8888
-        
-  
