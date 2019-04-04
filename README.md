@@ -11,28 +11,28 @@ This repository contains working sets of spring cloud samples with spring cloud 
   </tr>
   <tr>
     <td><a href="https://github.com/BarathArivazhagan/springboot-microservices-workshop/tree/master/eureka-server"> eureka-server</a></td>
-    <td>9001</td>
+    <td>8080</td>
     <td>Eureka service registration server </td>
   </tr>
   <tr>
-    <td><a href="https://github.com/BarathArivazhagan/springboot-microservices-workshop/tree/master/user-service">eureka-client-app1</a></td>
-    <td>9000</td>
+    <td><a href="https://github.com/BarathArivazhagan/springboot-microservices-workshop/tree/master/eureka-client-app1">eureka-client-app1</a></td>
+    <td>8081</td>
     <td>Eureka service discovery client registered with eureka-server</td>
   </tr>
   <tr>
-    <td><a href="https://github.com/BarathArivazhagan/springboot-microservices-workshop/tree/master/fork-join-demo">eureka-client-app2</a></td>
-    <td>4200</td>
+    <td><a href="https://github.com/BarathArivazhagan/springboot-microservices-workshop/tree/master/eureka-client-app2">eureka-client-app2</a></td>
+    <td>8082</td>
     <td>Eureka service discovery client registered with eureka-server</td>
   </tr>
   <tr>
     <td><a href="https://github.com/BarathArivazhagan/springboot-microservices-workshop/tree/master/api-gateway">zuul-proxy</a></td>
-    <td>9500</td>
+    <td>8085</td>
     <td>Zuul reverse proxy server acting as reverse proxy pass to other microservices</td>
   </tr>
 
   <tr>
     <td><a href="https://github.com/BarathArivazhagan/springboot-microservices-workshop/tree/master/api-gateway">config-server</a></td>
-    <td>9500</td>
+    <td>8888</td>
     <td>Configuration server acting as a hub for centralized configuration</td>
   </tr>
   
