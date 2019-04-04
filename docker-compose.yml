@@ -13,6 +13,7 @@ services:
      - config-server
   eureka-client-app1:
     build: ./eureka-client-app1
+    image: barathece91/springboot-microservices-workshop/eureka-client-app1
     ports:
       - "8081:8081"
     depends_on:
@@ -22,7 +23,8 @@ services:
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8080/eureka    
       SPRING_CLOUD_CONFIG_URI: http://config-server:8888
   eureka-client-app2:
-    build: ./eureka-client-app1
+    build: ./eureka-client-app2
+    image: barathece91/springboot-microservices-workshop/eureka-client-app2
     ports:
       - "8082:8082"
     depends_on:
@@ -33,6 +35,7 @@ services:
       SPRING_CLOUD_CONFIG_URI: http://config-server:8888
   zuul-proxy:
     build: ./zuul-proxy
+    image: barathece91/springboot-microservices-workshop/zuul-proxy
     ports:
       - "8085:8085"
     depends_on: 

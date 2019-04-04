@@ -1,3 +1,3 @@
 FROM openjdk:8-jdk-alpine
-ADD target/config-service-*.jar app.jar
+ADD target/config-server-*.jar app.jar
 ENTRYPOINT ["java","-jar","app.jar"]
