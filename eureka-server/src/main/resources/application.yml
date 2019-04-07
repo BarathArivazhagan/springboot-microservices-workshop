@@ -1,16 +1,19 @@
 
 server:
-  port: 8080
+  port: 9000
 
 spring:
   application:
     name: eureka-server
 
+management:
+  security:
+    enabled: false
 
 eureka:
   instance:
-    hostname: ${DOCKER_HOST:localhost}     
-    prefer-ip-address: true
+    hostname: localhost
   client:
     fetch-registry: false
     register-with-eureka: false
+

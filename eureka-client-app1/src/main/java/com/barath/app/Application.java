@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @EnableDiscoveryClient
 @RestController
-public class EurekaClientApp1Application {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EurekaClientApp1Application.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 	
 	@GetMapping("/")
