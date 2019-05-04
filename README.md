@@ -1,5 +1,6 @@
-### SpringBoot-Microservices-Workshop
-This repository contains working sets of spring cloud samples with spring cloud dependencies of Dalston version
+### springboot-microservices-workshop
+
+This repository contains microservices samples built using spring boot and spring cloud application development frameworks
 
 ### Projects :
 
