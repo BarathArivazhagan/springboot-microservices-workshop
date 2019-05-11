@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class EurekaClientApp2ApplicationTests {
+public class ZuulProxyApplicationTests {
 
 	@Test
 	public void contextLoads() {

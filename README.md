@@ -51,8 +51,8 @@ choose the branch based on below maintained versions.
   </tr>
   <tr>
     <td>master</td>
-    <td>1.5.10.RELEASE</td>
-    <td>Dalston.RELEASE</td>
+    <td>2.1.4.RELEASE</td>
+    <td>Greenwich.RELEASE</td>
   </tr>
   <tr>
     <td>1.0.x</td>
