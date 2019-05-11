@@ -2,9 +2,6 @@
 server:
   port: 8081
 
-management:
- security:
-    enabled: false
 
 eureka:
   client:
@@ -13,8 +10,19 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:9000/eureka
 
+feign:
+  hystrix:
+    enabled: true
+
 logging:
   level:
     org.springframework.web: info
-    org.springframework.cloud: debug
+    org.springframework.cloud: info
     com.netflix: info
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - "*"

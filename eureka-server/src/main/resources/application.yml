@@ -6,10 +6,6 @@ spring:
   application:
     name: eureka-server
 
-management:
-  security:
-    enabled: false
-
 eureka:
   instance:
     hostname: localhost
