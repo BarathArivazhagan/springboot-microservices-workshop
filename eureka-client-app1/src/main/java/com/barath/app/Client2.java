@@ -10,12 +10,3 @@ public interface Client2 {
 	@GetMapping("/")
 	public String welcome();
 }
-class Client2Fallback implements Client2 {
-
-	@Override
-	public String welcome() {
-		
-		return "Something went wrong, wait for sometime";
-	}
-   
-}

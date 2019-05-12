@@ -34,7 +34,7 @@ public class Application {
 		return "HELLO FROM EUREKA CLIENT 1";
 	}
 	
-	@GetMapping("/callClient2")
+	@GetMapping("/invoke/client2")
 	public String invokeClient2App(){
 		logger.info("invoke eureka client app2");
 		return client2.welcome();
