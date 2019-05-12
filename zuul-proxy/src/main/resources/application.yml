@@ -18,7 +18,7 @@ zuul:
     CLIENT1:
       service-id: eureka-client-app1
       path: /app1/*
-      strip-prefix: true
+      strip-prefix: false
     CLIENT2:
       service-id: eureka-client-app2
       path: /app2/*
