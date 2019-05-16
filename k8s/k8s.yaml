@@ -1,0 +1,275 @@
+
+# config map for spring profiles
+apiVersion: v1
+data:
+  spring.profiles.active: k8s
+kind: ConfigMap
+metadata:
+  name: spring-config-map
+
+---
+
+# config map for eureka clients
+
+apiVersion: v1
+data:
+  eureka.server.url:  http://eureka-server:9000/eureka 
+kind: ConfigMap
+metadata:
+  name: eureka-server-config-map
+---
+
+# config map for config clients
+
+apiVersion: v1
+data:
+  config.server.url:  http://config-server:8888
+kind: ConfigMap
+metadata:
+  name: eureka-server-config-map
+---
+
+# config map for api gateway
+
+apiVersion: v1
+data:
+  eureka.client.app1.url: http://${EUREKA_CLIENT_APP1_SERVICE_HOST}:${EUREKA_CLIENT_APP1_SERVICE_PORT}
+  eureka.client.app2.url: http://${EUREKA_CLIENT_APP2_SERVICE_HOST}:${EUREKA_CLIENT_APP2_SERVICE_PORT}
+kind: ConfigMap
+metadata:
+  name: zuul-proxy-config-map
+---
+
+# deployment resource for eureka server
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eureka-server
+spec:
+  selector:
+    matchLabels:
+      app: eureka-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: eureka-server
+    spec:
+      containers:
+      - name: eureka-server
+        image: barathece91/springboot-microservices-workshop-eureka-server:v2.1
+        ports:
+        - containerPort: 9000
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          valueFrom:
+              configMapKeyRef:
+                  name: spring-config-map
+                  key: spring.profiles.active
+   
+---
+# deployment resource for eureka client app1 service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eureka-client-app1
+spec:
+  selector:
+    matchLabels:
+      app: eureka-client-app1
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: eureka-client-app1
+    spec:
+      containers:   
+      - name: eureka-client-app1
+        image: barathece91/springboot-microservices-workshop-eureka-client-app1:v2.1
+        ports:
+        - containerPort: 8081
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          valueFrom:
+              configMapKeyRef:
+                  name: spring-config-map
+                  key: spring.profiles.active
+        - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+          valueFrom:
+              configMapKeyRef:
+                name: eureka-server-config-map
+                key: eureka.server.url 
+---
+
+# deployment resource for eureka client app2 service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eureka-client-app2
+spec:
+  selector:
+    matchLabels:
+      app: eureka-client-app2
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: eureka-client-app2
+    spec:
+      containers:   
+      - name: eureka-client-app2
+        image: barathece91/springboot-microservices-workshop-eureka-client-app2:v2.1
+        ports:
+        - containerPort: 8082
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          valueFrom:
+              configMapKeyRef:
+                  name: spring-config-map
+                  key: spring.profiles.active  
+        - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+          valueFrom:
+              configMapKeyRef:
+                name: eureka-server-config-map
+                key: eureka.server.url
+
+
+---
+# deployment resource for zuul proxy
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zuul-proxy
+spec:
+  selector:
+    matchLabels:
+      app: zuul-proxy
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: zuul-proxy
+    spec:
+      containers:
+      - name: zuul-proxy
+        image: barathece91/springboot-microservices-workshop-zuul-proxy:v2.1
+        ports:
+        - containerPort: 8085    
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          valueFrom:
+              configMapKeyRef:
+                  name: spring-config-map
+                  key: spring.profiles.active
+        - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+          valueFrom:
+              configMapKeyRef:
+                  name: eureka-server-config-map
+                  key: eureka.server.url
+        - name: ZUUL_ROUTES_CLIENT1_URL
+          valueFrom:
+              configMapKeyRef:
+                  name: zuul-proxy-config-map
+                  key: eureka.client.app1.url
+        - name: ZUUL_ROUTES_CLIENT1_URL
+          valueFrom:
+              configMapKeyRef:
+                  name: zuul-proxy-config-map
+                  key:  eureka.client.app2.url
+        - name: SPRING_CLOUD_CONFIG_URI
+          valueFrom:
+              configMapKeyRef:
+                  name: zuul-proxy-config-map
+                  key: bank.service.url
+---
+
+
+# deployment resource for config server
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: config-server
+spec:
+  selector:
+    matchLabels:
+      app: config-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: config-server
+    spec:
+      containers:
+      - name: config-server
+        image: barathece91/springboot-microservices-workshop-config-server:v2.1
+        ports:
+        - containerPort: 8888
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: eureka-server
+spec:
+  selector:
+    app: eureka-server
+  type: ClusterIP
+  ports:
+  - protocol: TCP
+    port: 9000
+    targetPort: 9000
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: eureka-client-app1
+spec:
+  selector:
+    app: eureka-client-app1
+  type: ClusterIP
+  ports:
+  - protocol: TCP
+    port: 8081
+    targetPort: 8081
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: eureka-client-app2
+spec:
+  selector:
+    app: eureka-client-app2
+  type: ClusterIP
+  ports:
+  - protocol: TCP
+    port: 8082
+    targetPort: 8082
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: zuul-proxy
+spec:
+  selector:
+    app: zuul-proxy
+  type: ClusterIP
+  ports:
+  - protocol: TCP
+    port: 8085
+    targetPort: 8085
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: config-server
+spec:
+  selector:
+    app: config-server
+  type: ClusterIP
+  ports:
+  - protocol: TCP
+    port: 8888
+    targetPort: 8888

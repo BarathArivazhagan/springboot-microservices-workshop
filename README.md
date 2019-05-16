@@ -1,6 +1,6 @@
 # springboot-microservices-workshop
 
-This repository contains microservices samples built using spring boot and spring cloud application development frameworks
+This repository contains microservices samples built using spring boot and spring cloud application development frameworks.
 
 ### Projects :
 
@@ -12,7 +12,7 @@ This repository contains microservices samples built using spring boot and sprin
   </tr>
   <tr>
     <td><a href="https://github.com/BarathArivazhagan/springboot-microservices-workshop/tree/master/eureka-server"> eureka-server</a></td>
-    <td>8080</td>
+    <td>9000</td>
     <td>Eureka service registration server </td>
   </tr>
   <tr>
@@ -26,20 +26,20 @@ This repository contains microservices samples built using spring boot and sprin
     <td>Eureka service discovery client registered with eureka-server</td>
   </tr>
   <tr>
-    <td><a href="https://github.com/BarathArivazhagan/springboot-microservices-workshop/tree/master/api-gateway">zuul-proxy</a></td>
+    <td><a href="https://github.com/BarathArivazhagan/springboot-microservices-workshop/tree/master/zuul-proxy">zuul-proxy</a></td>
     <td>8085</td>
     <td>Zuul reverse proxy server acting as reverse proxy pass to other microservices</td>
   </tr>
 
   <tr>
-    <td><a href="https://github.com/BarathArivazhagan/springboot-microservices-workshop/tree/master/api-gateway">config-server</a></td>
+    <td><a href="https://github.com/BarathArivazhagan/springboot-microservices-workshop/tree/master/config-server">config-server</a></td>
     <td>8888</td>
     <td>Configuration server acting as a hub for centralized configuration</td>
   </tr>
   
 
 
-## Compatability Matrix
+#### Compatability Matrix
 
 choose the branch based on below maintained versions.
 
@@ -80,10 +80,10 @@ choose the branch based on below maintained versions.
 ### Spring Boot Version :
 
 ```
-<parent>
+  <parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.10.RELEASE</version>
+		<version>2.1.4.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
   
@@ -93,23 +93,27 @@ choose the branch based on below maintained versions.
 
 Download all the projects. 
 
-- <b>eureka-server</b> : start the eureka server at port 8080
+- <b>eureka-server</b> : start the eureka server at port 9000
 - <b>eureka-client-app1</b> : start the eureka client app1 listening at port 8081
 - <b>eureka-client-app2</b> : start the eureka client app2 listening at port 8082
 
-#### Test the clients registration by going to eureka :
+#### Eureka Server Registration View :
  
- http://localhost:8080/ 
+ eureka-service : http://localhost:9000/ 
+
+ ![eureka-server](images/eureka-server.png)
  
-  <b>Test the clients </b> : 
+<b>Test the client apps </b> : 
  
- <b>Client 1</b>: http://localhost:8081/ 
+<b>eureka-client-app1</b>: http://localhost:8081/ 
  
- <b>Client 2</b>: http://localhost:8082/ 
+<b>Client 2</b>: http://localhost:8082/ 
  
-  <b>Test the clients through zuul proxy </b>: 
+<b>Test the clients through zuul proxy </b>: 
  
- Client 1: http://localhost:8085/app1/ --> routed to --> http://localhost:8081/
+``` 
+
+```
  
  Client 2: http://localhost:8085/app2/ --> routed to -->  http://localhost:8082/ 
  
