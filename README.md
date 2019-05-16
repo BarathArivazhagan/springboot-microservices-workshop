@@ -80,12 +80,12 @@ choose the branch based on below maintained versions.
 ### Spring Boot Version :
 
 ```
-  <parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.4.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
+    <parent>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-parent</artifactId>
+      <version>2.1.4.RELEASE</version>
+      <relativePath/> 
+	  </parent>
   
   ```
 
@@ -116,20 +116,20 @@ Take advantage of docker compose to quickly build and run applications as contai
 Note: Dont forget tochange the docker image names as per docker repository
 
 * Build docker images
-```
-docker-compose build
+```Shell
+$ docker-compose build
 ```
 
 * Push the images to the repository
 
-```
-docker-compose push
+```Shell
+$ docker-compose push
 ```
 
 * Run the applications
 
-```
-docker-compose up -d
+```Shell
+$ docker-compose up -d
 ```
 
 ### Kubernetes Support
@@ -138,7 +138,7 @@ To deploy the applications as docker containers inside kubernetes cluster
 
 [Katacoda K8s Playground](https://www.katacoda.com/courses/kubernetes/playground)
 
-```
+```Shell
 $ git clone https://github.com/BarathArivazhagan/springboot-microservices-workshop.git && cd k8s
 $ kubectl create -f k8s.yaml
 
@@ -161,7 +161,7 @@ service/config-server created
  
 <b>Test the microservices in local </b>: 
  
-``` 
+```Shell
 # eureka client app1 url
 
 $ curl http://localhost:8081/
@@ -192,7 +192,7 @@ HELLO FROM EUREKA CLIENT 2
 
 - verify the pods
 
-```
+```Shell
 $ kubectl get pods
 NAME                                  READY     STATUS      RESTARTS   AGE
 config-server-798f96964f-8h2p7        1/1       Running     0          6m
@@ -204,7 +204,7 @@ zuul-proxy-7c8f4597fd-lbrfd           1/1       Running     0          6m
 
 - verify the services
 
-```
+```Shell
 $ kubectl get services
 
 NAME                 TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
@@ -218,7 +218,7 @@ zuul-proxy           ClusterIP   10.100.161.43    <none>        8085/TCP   7m
 
 - Test the services 
 
-```
+```Shell
 $ kubectl run debug -it --rm --restart=Never --image=barathece91/debug 
 
 root@debug1:/# curl http://eureka-client-app1:8081
