@@ -4,11 +4,14 @@ server:
 
 
 eureka:
+  instance:
+    prefer-ip-address: true
   client:
     register-with-eureka: true
     fetch-registry: true
     serviceUrl:
       defaultZone: http://localhost:9000/eureka
+     
 
 feign:
   hystrix:
