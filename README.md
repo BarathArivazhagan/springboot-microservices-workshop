@@ -166,21 +166,72 @@ service/config-server created
 
 $ curl http://localhost:8081/
 
+HELLO FROM EUREKA CLIENT 1
+
 # eureka client app2 url
 
 $ curl http://localhost:8082/
+
+HELLO FROM EUREKA CLIENT 2
 
 # zuul proxy url for eureka client app1 
 
 $ curl http://localhost:8085/app1/
 
-# zuul proxy url for eureka client app2
+HELLO FROM EUREKA CLIENT 1
+
+## zuul proxy url for eureka client app2
 
 $ curl http://localhost:8085/app2/
+
+HELLO FROM EUREKA CLIENT 2
 ```
 
   
 <b>Test the microservices in K8s clsuter </b>: 
 
+- verify the pods
+
+```
+$ kubectl get pods
+NAME                                  READY     STATUS      RESTARTS   AGE
+config-server-798f96964f-8h2p7        1/1       Running     0          6m
+eureka-client-app1-5f775d994d-mhqmt   1/1       Running     0          6m
+eureka-client-app2-68c775f67b-9vvmq   1/1       Running     0          6m
+eureka-server-6bb9ccd47f-l2m47        1/1       Running     0          6m
+zuul-proxy-7c8f4597fd-lbrfd           1/1       Running     0          6m
+```
+
+- verify the services
+
+```
+$ kubectl get services
+
+NAME                 TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+config-server        ClusterIP   10.101.203.112   <none>        8888/TCP   7m
+eureka-client-app1   ClusterIP   10.104.65.88     <none>        8081/TCP   7m
+eureka-client-app2   ClusterIP   10.105.214.129   <none>        8082/TCP   7m
+eureka-server        ClusterIP   10.109.231.205   <none>        9000/TCP   7m
+kubernetes           ClusterIP   10.96.0.1        <none>        443/TCP    1h
+zuul-proxy           ClusterIP   10.100.161.43    <none>        8085/TCP   7m
+```
+
+- Test the services 
+
+```
+$ kubectl run debug -it --rm --restart=Never --image=barathece91/debug 
+
+root@debug1:/# curl http://eureka-client-app1:8081
+HELLO FROM EUREKA CLIENT 1
+
+root@debug1:/# curl http://eureka-client-app2:8082
+HELLO FROM EUREKA CLIENT 2
+
+root@debug1:/# curl http://zuul-proxy:8085/app1/
+<b>HELLO FROM EUREKA CLIENT 2</b>
+
+root@debug1:/# curl http://zuul-proxy:8085/app2/
+<b>HELLO FROM EUREKA CLIENT 2</b>
+```
 
  
