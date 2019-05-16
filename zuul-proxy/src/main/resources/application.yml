@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: eureka-zuul-proxy
+    name: zuul-proxy
 
   
 eureka:
@@ -24,5 +24,12 @@ zuul:
       path: /app2/*
       strip-prefix: true
 
-      
+## spring actuator endpoints
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 
+          - "*"   
       

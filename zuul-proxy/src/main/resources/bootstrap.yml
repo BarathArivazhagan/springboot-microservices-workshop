@@ -1,7 +1,7 @@
 
 spring:
   application:
-    name: eureka-zuul-proxy
+    name: zuul-proxy
   cloud:
     config:
       uri: http://localhost:8888
