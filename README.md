@@ -108,13 +108,79 @@ Download all the projects.
 <b>eureka-client-app1</b>: http://localhost:8081/ 
  
 <b>Client 2</b>: http://localhost:8082/ 
- 
-<b>Test the clients through zuul proxy </b>: 
- 
-``` 
+
+### Docker support
+
+Take advantage of docker compose to quickly build and run applications as containers.
+
+Note: Dont forget tochange the docker image names as per docker repository
+
+* Build docker images
+```
+docker-compose build
+```
+
+* Push the images to the repository
 
 ```
+docker-compose push
+```
+
+* Run the applications
+
+```
+docker-compose up -d
+```
+
+### Kubernetes Support
+
+To deploy the applications as docker containers inside kubernetes cluster
+
+[Katacoda K8s Playground](https://www.katacoda.com/courses/kubernetes/playground)
+
+```
+$ git clone https://github.com/BarathArivazhagan/springboot-microservices-workshop.git && cd k8s
+$ kubectl create -f k8s.yaml
+
+configmap/spring-config-map created
+configmap/eureka-server-config-map created
+configmap/config-server-config-map created
+configmap/zuul-proxy-config-map created
+deployment.apps/eureka-server created
+deployment.apps/eureka-client-app1 created
+deployment.apps/eureka-client-app2 created
+deployment.apps/zuul-proxy created
+deployment.apps/config-server created
+service/eureka-server created
+service/eureka-client-app1 created
+service/eureka-client-app2 created
+service/zuul-proxy created
+service/config-server created
+```
+
  
- Client 2: http://localhost:8085/app2/ --> routed to -->  http://localhost:8082/ 
+<b>Test the microservices in local </b>: 
  
+``` 
+# eureka client app1 url
+
+$ curl http://localhost:8081/
+
+# eureka client app2 url
+
+$ curl http://localhost:8082/
+
+# zuul proxy url for eureka client app1 
+
+$ curl http://localhost:8085/app1/
+
+# zuul proxy url for eureka client app2
+
+$ curl http://localhost:8085/app2/
+```
+
+  
+<b>Test the microservices in K8s clsuter </b>: 
+
+
  
