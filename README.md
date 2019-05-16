@@ -85,17 +85,9 @@ choose the branch based on below maintained versions.
       <artifactId>spring-boot-starter-parent</artifactId>
       <version>2.1.4.RELEASE</version>
       <relativePath/> 
-	  </parent>
+	</parent>
   
   ```
-
-### How to run the project ? 
-
-Download all the projects. 
-
-- <b>eureka-server</b> : start the eureka server at port 9000
-- <b>eureka-client-app1</b> : start the eureka client app1 listening at port 8081
-- <b>eureka-client-app2</b> : start the eureka client app2 listening at port 8082
 
 #### Eureka Server Registration View :
  
@@ -103,11 +95,48 @@ Download all the projects.
 
  ![eureka-server](images/eureka-server.png)
  
-<b>Test the client apps </b> : 
- 
-<b>eureka-client-app1</b>: http://localhost:8081/ 
- 
-<b>Client 2</b>: http://localhost:8082/ 
+
+### How to run the project ? 
+
+* Clone the repository
+
+```sh
+git clone https://github.com/BarathArivazhagan/springboot-microservices-workshop.git
+```
+
+* Execute below script to build all the applications
+
+```sh 
+cd springboot-microservices-workshop
+./build.sh
+```
+* On windows, perform maven build
+```
+cd springboot-microservices-workshop
+mvn clean package
+```
+
+* Start the applications
+
+```sh
+
+cd springboot-microservices-workshop
+cd  eureka-server
+./mvnw spring-boot:run
+
+cd eureka-client-app1
+./mvnw spring-boot:run
+
+cd eureka-client-app2
+./mvnw spring-boot:run
+
+cd zuul-proxy
+./mvnw spring-boot:run
+
+cd config-server
+./mvnw spring-boot:run
+
+```
 
 ### Docker support
 
