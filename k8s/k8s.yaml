@@ -172,7 +172,7 @@ spec:
               configMapKeyRef:
                   name: zuul-proxy-config-map
                   key: eureka.client.app1.url
-        - name: ZUUL_ROUTES_CLIENT1_URL
+        - name: ZUUL_ROUTES_CLIENT2_URL
           valueFrom:
               configMapKeyRef:
                   name: zuul-proxy-config-map
