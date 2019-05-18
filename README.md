@@ -37,7 +37,7 @@ This repository contains microservices samples built using spring boot and sprin
     <td>Configuration server acting as a hub for centralized configuration</td>
   </tr>
   
-
+</table>
 
 #### Compatability Matrix
 
