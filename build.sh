@@ -40,7 +40,6 @@ cd ../
 echo "BUILD CONFIG SERVER"
 
 cd config-server
-npm install
-npm run build
+mvn clean install -DskipTests
 
 echo "BUILD CONFIG SERVER SUCCESSFUL"

@@ -57,7 +57,7 @@ spec:
     spec:
       containers:
       - name: eureka-server
-        image: barathece91/springboot-microservices-workshop-eureka-server:v2.1
+        image: barathece91/springboot-microservices-workshop-eureka-server:v2.1.1
         ports:
         - containerPort: 8080
         env:
@@ -85,7 +85,7 @@ spec:
     spec:
       containers:   
       - name: eureka-client-app1
-        image: barathece91/springboot-microservices-workshop-eureka-client-app1:v2.1
+        image: barathece91/springboot-microservices-workshop-eureka-client-app1:v2.1.1
         ports:
         - containerPort: 8081
         env:
@@ -118,7 +118,7 @@ spec:
     spec:
       containers:   
       - name: eureka-client-app2
-        image: barathece91/springboot-microservices-workshop-eureka-client-app2:v2.1
+        image: barathece91/springboot-microservices-workshop-eureka-client-app2:v2.1.1
         ports:
         - containerPort: 8082
         env:
@@ -153,7 +153,7 @@ spec:
     spec:
       containers:
       - name: zuul-proxy
-        image: barathece91/springboot-microservices-workshop-zuul-proxy:v2.1
+        image: barathece91/springboot-microservices-workshop-zuul-proxy:v2.1.1
         ports:
         - containerPort: 8085    
         env:
@@ -203,7 +203,7 @@ spec:
     spec:
       containers:
       - name: config-server
-        image: barathece91/springboot-microservices-workshop-config-server:v2.1
+        image: barathece91/springboot-microservices-workshop-config-server:v2.1.1
         ports:
         - containerPort: 8888
 ---
