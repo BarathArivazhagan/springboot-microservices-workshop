@@ -71,7 +71,7 @@ choose the branch based on below maintained versions.
   </tr>
   <tr>
     <td>2.1.x</td>
-    <td>2.1.13.RELEASE</td>
+    <td>2.1.3.RELEASE</td>
     <td>Greenwich.RELEASE</td>
   </tr>
   <tr>
