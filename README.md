@@ -51,8 +51,8 @@ choose the branch based on below maintained versions.
   </tr>
   <tr>
     <td>master</td>
-    <td>2.1.4.RELEASE</td>
-    <td>Greenwich.RELEASE</td>
+    <td>2.1.5.RELEASE</td>
+    <td>Greenwich.SR1</td>
   </tr>
   <tr>
     <td>1.0.x</td>
@@ -73,7 +73,12 @@ choose the branch based on below maintained versions.
     <td>2.1.x</td>
     <td>2.1.13.RELEASE</td>
     <td>Greenwich.RELEASE</td>
-  </tr> 
+  </tr>
+  <tr>
+    <td>2.1.4</td>
+    <td>2.1.4.RELEASE</td>
+    <td>Greenwich.RELEASE</td>
+  </tr>
   
 </table>
 
