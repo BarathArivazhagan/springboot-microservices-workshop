@@ -13,7 +13,7 @@ metadata:
 
 apiVersion: v1
 data:
-  eureka.server.url:  http://eureka-server:9000/eureka
+  eureka.server.url:  http://eureka-server:8080/eureka
 kind: ConfigMap
 metadata:
   name: eureka-server-config-map
@@ -59,7 +59,7 @@ spec:
       - name: eureka-server
         image: barathece91/springboot-microservices-workshop-eureka-server:v2.1
         ports:
-        - containerPort: 9000
+        - containerPort: 8080
         env:
         - name: SPRING_PROFILES_ACTIVE
           valueFrom:
@@ -217,8 +217,8 @@ spec:
   type: ClusterIP
   ports:
   - protocol: TCP
-    port: 9000
-    targetPort: 9000
+    port: 8080
+    targetPort: 8080
 ---
 kind: Service
 apiVersion: v1

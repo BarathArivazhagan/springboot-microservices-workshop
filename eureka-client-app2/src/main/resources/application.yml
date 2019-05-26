@@ -1,17 +1,16 @@
 
 
 server:
-  port: 8082
-  
+  port: 8082  
 eureka:
   instance:
-    prefer-ip-address: true
+    prefer-ip-address: true    
   client:
     register-with-eureka: true
-    fetch-registry: true
+    fetch-registry: true    
     serviceUrl:
-      defaultZone: http://localhost:9000/eureka 
-
+      defaultZone: http://localhost:8080/eureka 
+  
 management:
   endpoints:
     web:

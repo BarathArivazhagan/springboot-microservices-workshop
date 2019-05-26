@@ -12,7 +12,7 @@ This repository contains microservices samples built using spring boot and sprin
   </tr>
   <tr>
     <td><a href="https://github.com/BarathArivazhagan/springboot-microservices-workshop/tree/master/eureka-server"> eureka-server</a></td>
-    <td>9000</td>
+    <td>8080</td>
     <td>Eureka service registration server </td>
   </tr>
   <tr>
@@ -80,7 +80,7 @@ choose the branch based on below maintained versions.
 
 #### Eureka Server Registration View :
  
- eureka-service : http://localhost:9000/ 
+ eureka-service : http://localhost:8080/ 
 
  ![eureka-server](images/eureka-server.png)
  
@@ -229,7 +229,7 @@ NAME                 TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
 config-server        ClusterIP   10.101.203.112   <none>        8888/TCP   7m
 eureka-client-app1   ClusterIP   10.104.65.88     <none>        8081/TCP   7m
 eureka-client-app2   ClusterIP   10.105.214.129   <none>        8082/TCP   7m
-eureka-server        ClusterIP   10.109.231.205   <none>        9000/TCP   7m
+eureka-server        ClusterIP   10.109.231.205   <none>        8080/TCP   7m
 kubernetes           ClusterIP   10.96.0.1        <none>        443/TCP    1h
 zuul-proxy           ClusterIP   10.100.161.43    <none>        8085/TCP   7m
 ```
