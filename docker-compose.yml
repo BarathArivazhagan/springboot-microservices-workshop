@@ -2,12 +2,12 @@ version: '3'
 services:
   config-server:
     build: ./config-server
-    image: barathece91/springboot-microservices-workshop-config-server:v2.1
+    image: barathece91/springboot-microservices-workshop-config-server:v2.1.1
     ports:
       - "8888:8888"
   eureka-server:
     build: ./eureka-server
-    image: barathece91/springboot-microservices-workshop-eureka-server:v2.1
+    image: barathece91/springboot-microservices-workshop-eureka-server:v2.1.1
     ports:
       - "8080:8080"
   zipkin-ui-server:
@@ -16,7 +16,7 @@ services:
       - "9411:9411"
   eureka-client-app1:
     build: ./eureka-client-app1
-    image: barathece91/springboot-microservices-workshop-eureka-client-app1:v2.1
+    image: barathece91/springboot-microservices-workshop-eureka-client-app1:v2.1.1
     ports:
       - "8081:8081"
     depends_on:
@@ -27,7 +27,7 @@ services:
       SPRING_CLOUD_CONFIG_URI: http://config-server:8888
   eureka-client-app2:
     build: ./eureka-client-app2
-    image: barathece91/springboot-microservices-workshop-eureka-client-app2:v2.1
+    image: barathece91/springboot-microservices-workshop-eureka-client-app2:v2.1.1
     ports:
       - "8082:8082"
     depends_on:
@@ -38,7 +38,7 @@ services:
       SPRING_CLOUD_CONFIG_URI: http://config-server:8888
   zuul-proxy:
     build: ./zuul-proxy
-    image: barathece91/springboot-microservices-workshop-zuul-proxy:v2.1
+    image: barathece91/springboot-microservices-workshop-zuul-proxy:v2.1.1
     ports:
       - "8085:8085"
     depends_on: 
